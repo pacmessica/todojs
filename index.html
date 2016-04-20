@@ -102,9 +102,20 @@
 
   <script>
     // JavaScript here...
-    var todoCounter = document.getElementById('todo-count');
-    var totalTodos = document.getElementsByClassName("todo").length;
-    todoCounter.innerHTML = totalTodos;
+    function updateCounters() {
+      var todoCounter = document.getElementById('todo-count');
+      var totalTodos = document.getElementsByClassName("todo").length;
+      todoCounter.innerHTML = totalTodos;
+
+      var completedCount = document.getElementById('completed-count');
+      var completedTodos = document.getElementsbyClassName("completed").length;
+      completedCount.innerHTML = completedTodos;
+
+      var todoCount = document.getElementById('todo-count');
+      var uncompletedTodos = totalTodos - completedTodos;
+      todoCount.innerHTML = uncompletedTodos;
+    }
+    updateCounters();
 
   </script>
 
