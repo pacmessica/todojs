@@ -85,11 +85,11 @@
 
     <ul id="todolist">
       <li class="todo">
-        <input id="todo-1" type="checkbox" value="1">
+        <input id="todo-1" type="checkbox" value="1" onChange="toggleDone.bind(this)();">
         <label for="todo-1">Sweep the floor</label>
       </li>
       <li class="todo completed">
-        <input id="todo-2" type="checkbox" value="1" checked="checked">
+        <input id="todo-2" type="checkbox" value="1" checked="checked" onChange="toggleDone.bind(this)();">
         <label for="todo-2">Dust the vases</label>
       </li>
     </ul>
@@ -102,20 +102,37 @@
 
   <script>
     // JavaScript here...
-    function updateCounters() {
-      var todoCounter = document.getElementById('todo-count');
-      var totalTodos = document.getElementsByClassName("todo").length;
-      todoCounter.innerHTML = totalTodos;
+  function updateCounters() {
+  // Total number of todos
+    var totalCount = document.getElementById('total-count');
+    var totalTodos = document.getElementsByClassName("todo").length;
+    totalCount.innerHTML = totalTodos;
 
-      var completedCount = document.getElementById('completed-count');
-      var completedTodos = document.getElementsbyClassName("completed").length;
-      completedCount.innerHTML = completedTodos;
+    // Total number of completed todos
+    var completedCount = document.getElementById('completed-count');
+    var completedTodos = document.getElementsByClassName("completed").length;
+    completedCount.innerHTML = completedTodos;
 
-      var todoCount = document.getElementById('todo-count');
-      var uncompletedTodos = totalTodos - completedTodos;
-      todoCount.innerHTML = uncompletedTodos;
+    // Total number of uncompleted todos
+    var todoCount = document.getElementById('todo-count');
+    var uncompletedTodos = totalTodos - completedTodos;
+    todoCount.innerHTML = uncompletedTodos;
+  }
+
+
+  function toggleDone() {
+    var checkbox = this;
+
+    // check the checked status of the checkbox
+    if (checkbox.checked) {
+      // the "completed" class should be set on the parent element, the <li>
+      checkbox.parentElement.className = "todo completed";
+    } else {
+      checkbox.parentElement.className = "todo";
     }
+
     updateCounters();
+  }
 
   </script>
 
