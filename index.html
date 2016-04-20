@@ -96,12 +96,20 @@
     <div class="footer">
       Todo: <span id="todo-count">1</span> •
       Done: <span id="completed-count">0</span> •
-      Total: <span id="total-count">1</span>
+      Total: <span id="total-count">0</span>
     </div>
   </div>
 
   <script>
     // JavaScript here...
+    var todoCounter = document.getElementById('todo-count');
+    var totalTodos = document.getElementsByClassName("todo").length;
+    todoCounter.innerHTML = totalTodos;
+
   </script>
+
+
+
+
 </body>
 </html>
